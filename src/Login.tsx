@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "./styles.css";
 
-export function Loginpage() {
+export function LoginPage() {
   // React States
   const [errorMessages, setErrorMessages] = useState({name: "", message: ""});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -87,4 +87,4 @@ export function Loginpage() {
   );
 }
 
-export default Loginpage;
+export default LoginPage;

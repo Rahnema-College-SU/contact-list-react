@@ -1,13 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+
+// import logo from './logo.svg';
 import './App.css';
-import Loginpage from './Login';
-import { BrowserRouter, Route } from 'react-router-dom';
+import LoginPage from './Login';
+import ContactListPage from './ContactList';
 
 function App() {
   return (
     <div className="App">
-      <Loginpage/>
+
+        {/* <LoginPage/> */}
+
+        <ContactListPage/>
+
+        {/* <Routes>
+
+          <Route path="/Login">
+            <LoginPage />
+          </Route>
+
+          <Route path="/ContactListPage">
+            <ContactListPage />
+          </Route>
+
+        </Routes> */}
+
     </div>
   );
 }
