@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import "./styles.css";
-
 export function Loginpage() {
   // React States
   const [errorMessages, setErrorMessages] = useState({name: "", message: ""});
