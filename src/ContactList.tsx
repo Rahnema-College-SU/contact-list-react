@@ -28,29 +28,63 @@ export default function ContactListPage() {
     const [contactName, setContactName] = useState("");
     const [contactPhone, setContactPhone] = useState("");
 
-
+// 09195601652
 
     const handleAddSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault();
 
         const newContactInfo = {
             name: contactName,
-            phone: contactPhone
+            phoneNum: contactPhone
         } 
 
-        
+        setContactList([...contactList, newContactInfo]);
     };
       
     const handleSearchSubmit = (event: React.SyntheticEvent) => {
-        event.preventDefault();
+        event.preventDefault(); 
 
         const name = contactName;
+
+
       
     };
     
 
     return (
-        <div>
+    <div className="app">
+        <div className="login-form">
+
+            <div className="form">
+                <form onSubmit={handleSearchSubmit}>
+                    <div className="input-container">
+                        <label>Name </label>
+                        <input 
+                            type="text" 
+                            name="name" 
+                            required
+                            onChange={event => setContactName(event.target.value)}
+                        />
+                    </div>
+
+                    <div className="button-container">
+                        <input type="submit" value="Search For Contact"/>
+                    </div>
+                </form>
+            </div>
+
+            <div className='form '>
+                <ul>
+                    {
+                        contactList.map((contactInfo) => {
+                            return <li className='list-item'>
+                                {contactInfo.name}, {contactInfo.phoneNum}
+                            </li>
+                        })
+                    }
+                </ul>
+            </div>
+
             <div className="form">
                 <form onSubmit={handleAddSubmit}>
                     <div className="input-container">
@@ -80,40 +114,8 @@ export default function ContactListPage() {
                     </div>
                 </form>
             </div>
-
-            <div className="form">
-                <form onSubmit={handleSearchSubmit}>
-                    <div className="input-container">
-                        <label>Name </label>
-                        <input 
-                            type="text" 
-                            name="name" 
-                            required
-                            onChange={event => setContactName(event.target.value)}
-                        />
-                    </div>
-
-                    <div className="button-container">
-                        <input type="submit" value="Search For Contact"/>
-                    </div>
-                </form>
-            </div>
-
-            <div className='form'>
-
-                <ul>
-                    {
-                        contactList.map((contactInfo) => {
-                            return <li>
-                                {contactInfo.name}, 
-                                {contactInfo.phoneNum}
-                            </li>
-                        })
-                    }
-                </ul>
-                
-            </div>
         </div>
+    </div>
 
     )
 }
