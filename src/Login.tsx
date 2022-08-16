@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
+import "./styles.css";
+
 export function Loginpage() {
   // React States
   const [errorMessages, setErrorMessages] = useState({name: "", message: ""});
@@ -22,6 +24,8 @@ export function Loginpage() {
     uname: "invalid username",
     pass: "invalid password"
   };
+
+
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     //Prevent page reload
