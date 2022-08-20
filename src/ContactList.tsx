@@ -3,31 +3,35 @@ import { useState } from 'react';
 
 import "./styles.css";
 
+type contactinfo = {
+    name: string,
+    phoneNum: string
+}
 
 export default function ContactListPage() {
 
     const [contactList, setContactList] = useState([
         {
             name: "Akbar",
-            phoneNum: "0128347"
+            phoneNum: "09192341652"
+        },
+        {
+            name: "Reza",
+            phoneNum: "0919562342"
+        },
+        {
+            name: "Mammad",
+            phoneNum: "09190891652"
         },
         {
             name: "Akbar",
-            phoneNum: "0128347"
-        },
-        {
-            name: "Akbar",
-            phoneNum: "0128347"
-        },
-        {
-            name: "Akbar",
-            phoneNum: "0128347"
+            phoneNum: "09171601652"
         }
     ]);
 
     const [contactName, setContactName] = useState("");
     const [contactPhone, setContactPhone] = useState("");
-
+    const [searchedName, setSearchName] = useState("");
 // 09195601652
 
     const handleAddSubmit = (event: React.SyntheticEvent) => {
@@ -44,12 +48,20 @@ export default function ContactListPage() {
     const handleSearchSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault(); 
 
-        const name = contactName;
-
-
+        const searchedName = contactName;
+        setSearchName(searchedName);
       
     };
     
+    const matchesName = (currContName: contactinfo) => {
+        
+        if(searchedName === currContName.name || !searchedName) {
+            return true;
+        }
+        
+        return false
+    }
+
 
     return (
     <div className="app">
@@ -60,9 +72,9 @@ export default function ContactListPage() {
                     <div className="input-container">
                         <label>Name </label>
                         <input 
+                            // value={contactName}
                             type="text" 
                             name="name" 
-                            required
                             onChange={event => setContactName(event.target.value)}
                         />
                     </div>
@@ -76,7 +88,7 @@ export default function ContactListPage() {
             <div className='form '>
                 <ul>
                     {
-                        contactList.map((contactInfo) => {
+                        contactList.filter(matchesName).map((contactInfo) => {
                             return <li className='list-item'>
                                 {contactInfo.name}, {contactInfo.phoneNum}
                             </li>
@@ -90,6 +102,7 @@ export default function ContactListPage() {
                     <div className="input-container">
                         <label>Name</label>
                         <input 
+                            // value={contactName}
                             type="text" 
                             name="name" 
                             required

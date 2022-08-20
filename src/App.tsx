@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter ,Route, Routes } from 'react-router-dom';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -10,21 +10,14 @@ function App() {
   return (
     <div className="App">
 
-        {/* <LoginPage/> */}
+      <BrowserRouter>
+          <Routes>
 
-        <ContactListPage/>
+            <Route path="/login" element={<LoginPage />}/>
+            <Route path="/contactListPage" element={<ContactListPage />}/>
 
-        {/* <Routes>
-
-          <Route path="/Login">
-            <LoginPage />
-          </Route>
-
-          <Route path="/ContactListPage">
-            <ContactListPage />
-          </Route>
-
-        </Routes> */}
+          </Routes>
+      </BrowserRouter>
 
     </div>
   );
